@@ -16,8 +16,10 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "eslint": "^9.21.0",
