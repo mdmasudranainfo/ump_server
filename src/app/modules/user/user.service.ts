@@ -17,10 +17,10 @@ const createUser = async (data: IUser): Promise<IUser | null> => {
   }
 
   // hash password
-  data.password = await bcrypt.hash(
-    data.password,
-    Number(config.bcrypt_salt_rounds)
-  );
+  // data.password = await bcrypt.hash(
+  //   data.password,
+  //   Number(config.bcrypt_salt_rounds)
+  // );
 
   // Create a new user
   const user = await User.create(data);

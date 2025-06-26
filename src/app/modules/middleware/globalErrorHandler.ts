@@ -5,15 +5,16 @@ import handleValidationError from "../../../error/handleValidationError";
 
 import { IGenericErrorMessage } from "../../../interfaces/error";
 import ApiError from "../../../error/ApiError";
-import { errorLogger } from "../../../shared/logger";
+
 import { ZodError } from "zod";
 import handleZodError from "../../../error/handleZodError";
 import handleCastError from "../../../error/handleCastError";
+import { errorlogger } from "../../../shared/logger";
 
 const globalErrorHandler: ErrorRequestHandler = (err: any, req, res, next) => {
   config.env === "development"
     ? console.log("globalErrorHandler", err)
-    : errorLogger.error("globalErrorHandler", err);
+    : errorlogger.error("globalErrorHandler", err);
 
   let statusCode = 500;
   let message = "internal server error";
