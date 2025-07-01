@@ -29,6 +29,7 @@ const getAllAcademicSemesters = catchAsync(async (req, res, next) => {
   //   sortBy: req.query.sortBy as string,
   //   sortOrder: req.query.sortOrder,
   // };
+  // console.log("cookies", req.cookies);
 
   const paginationOptions = pick(req.query, paginationFills);
   const filters = pick(req.query, ["searchTerm", "title", "code", "year"]);

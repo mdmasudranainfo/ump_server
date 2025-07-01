@@ -30,6 +30,17 @@ const createUser = async (data: IUser): Promise<IUser | null> => {
   return user;
 };
 
+const deleteUser = async (id: string): Promise<void> => {
+  // Check if user exists
+  const user = await User.findOne({ id });
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  await User.findOneAndDelete({ id: user.id });
+};
+
 export const userService = {
   createUser,
+  deleteUser,
 };

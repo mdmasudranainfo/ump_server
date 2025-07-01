@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 import app from "./app";
 import config from "./config/index";
-import { logger, errorLogger } from "./shared/logger";
+import { errorlogger, logger } from "./shared/logger";
 import { Server } from "http";
 
 const port = config.port;
 
 process.on("uncaughtException", (err) => {
-  errorLogger.error("Uncaught Exception: ", err);
+  errorlogger.error("Uncaught Exception: ", err);
   process.exit(1);
 });
 
@@ -21,18 +21,18 @@ async function main() {
       logger.info(`app listening on port ${port}`);
     });
   } catch (err) {
-    errorLogger.error(`Failed to connect to the database: ${err}`);
+    errorlogger.error(`Failed to connect to the database: ${err}`);
     process.exit(1);
   }
 
   process.on("unhandledRejection", (err) => {
     if (server) {
       server.close(() => {
-        errorLogger.error(`Unhandled Rejection: ${err}`);
+        errorlogger.error(`Unhandled Rejection: ${err}`);
         process.exit(1);
       });
     } else {
-      errorLogger.error(`Unhandled Rejection without server: ${err}`);
+      errorlogger.error(`Unhandled Rejection without server: ${err}`);
       process.exit(1);
     }
   });
