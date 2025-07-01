@@ -10,3 +10,11 @@ export default interface IUser {
   faculty?: Types.ObjectId | IAcademicFaculty;
   admin?: Types.ObjectId;
 }
+
+export type UserMethod = {
+  isUserExist(id: string): Promise<IUser | null>;
+  isPasswordMatch(
+    givenPassword: string,
+    savedPassword: string
+  ): Promise<boolean>;
+};
