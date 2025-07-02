@@ -9,6 +9,8 @@ const createUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     // Create a new user with the received data
     const user = req.body;
+
+    console.log("user Payload", req.user);
     const newUser = await userService.createUser(user);
 
     sendResponse(res, {

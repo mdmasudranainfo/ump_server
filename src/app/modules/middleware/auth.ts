@@ -9,6 +9,8 @@ const auth =
   (...RequiredRole: string[]) =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
+      // check if user exit
+
       // get token
       const token = req.headers.authorization;
       if (!token) {
@@ -20,8 +22,14 @@ const auth =
         config.jwt.secret as Secret
       );
 
-      console.log("Token", token);
-
+      // check if user role is allowed
+      if (RequiredRole.length && !RequiredRole.includes(verifyToken.role)) {
+        throw new ApiError(
+          status.FORBIDDEN,
+          "You are not allowed to access this resource"
+        );
+      }
+      req.user = verifyToken;
       next();
     } catch (error) {
       next(error);

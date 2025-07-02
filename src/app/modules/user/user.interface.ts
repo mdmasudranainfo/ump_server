@@ -6,6 +6,7 @@ export default interface IUser {
   role: string;
   password: string;
   needPasswordChange?: true | false;
+  passwordChangedAt?: Date;
   student?: Types.ObjectId;
   faculty?: Types.ObjectId | IAcademicFaculty;
   admin?: Types.ObjectId;

@@ -12,6 +12,7 @@ const verifyToken = (
     if (typeof decoded === "string" || !decoded) {
       throw new ApiError(status.FORBIDDEN, "Invalid refresh token");
     }
+
     return { id: decoded.id as string, role: decoded.role as string };
   } catch (error) {
     throw new ApiError(status.FORBIDDEN, "Invalid refresh token");

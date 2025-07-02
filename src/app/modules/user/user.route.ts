@@ -11,7 +11,7 @@ const router = express.Router();
 router.post(
   "/create",
   ValidationRequest(UserValidation.createUserValidatorZodSchema),
-  auth(USER_ROLE.ADMIN, USER_ROLE.USER),
+  auth(USER_ROLE.ADMIN),
   userController.createUser
 );
 router.delete("/:id", userController.deleteUser);
